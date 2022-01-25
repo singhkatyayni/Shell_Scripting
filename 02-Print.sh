@@ -10,3 +10,7 @@ echo -e "\e[1;36mText in Cyan"
 
 echo -e "\e[31mText in color; but disabled now on\e[0m"
 echo -e "Text in no colour"
+
+
+echo -e "\e[1;31mMessage in RED\e[0m"
+echo -e "\e[1;Colour disabled"
