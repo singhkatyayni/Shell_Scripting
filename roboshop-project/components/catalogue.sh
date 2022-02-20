@@ -66,6 +66,9 @@ echo "Extract catalogue code"
 cd /tmp/
 unzip -o catalogue.zip &>>$LOG_FILE
 
+echo " Clean old content"
+rm -rf /home/roboshop/catalogue
+
 echo "Copy catalogue content"
 cp -r catalogue-main /home/roboshop/catalogue
 
@@ -73,3 +76,15 @@ echo "Install Nodejs dependencies"
 cd /home/roboshop/catalogue
 npm install &>>$LOG_FILE
 
+chown roboshop:roboshop /hom/roboshop -R
+
+echo "Update systemd file"
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service
+
+echo "Setup catalogue systemd file"
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+
+echo "Start Catalogue"
+systemctl daemon-reload
+systemctl enable catalogue
+systemctl start catalogue
