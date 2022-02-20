@@ -32,3 +32,6 @@
 #```
 #
 ##Finally restart the service once to effect the changes.
+
+echo "Installing nginx"
+yum install nginx -y
