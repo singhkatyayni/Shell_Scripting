@@ -10,3 +10,7 @@ fi
 if [ $a != 123 ]
 then echo NOT OK
 fi
+
+if [ -z "$b"]
+then echo B is empty/Not declared variable
+fi
