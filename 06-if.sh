@@ -2,7 +2,7 @@
 
 # string expressions
 
-a=123
+a=456
 if [ $a = 123 ]
 then echo OK
 fi
