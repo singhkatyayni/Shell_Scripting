@@ -34,4 +34,7 @@
 ##Finally restart the service once to effect the changes.
 
 echo "Installing nginx"
-yum install nginx -y >/tmp/roboshop.log
+yum install nginx -y >>/tmp/roboshop.log
+
+echo Downloading frontend content
+curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >>/tmp/roboshop.log
