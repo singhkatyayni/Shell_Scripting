@@ -51,3 +51,22 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/robos
 
 echo "Install mongodb"
 yum install -y mongodb-org &>>$LOG_FILE
+
+echo "Update mongodb config file"
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongodb.conf &>>$LOG_FILE
+
+echo "Start Database"
+systemctl enable mongodb &>>$LOG_FILE
+systemctl start mongodb &>>$LOG_FILE
+
+echo "Download Schema"
+curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>$LOG_FILE
+
+echo "extract schema"
+cd /tmp/
+unzip -o mongodb.zip &>>$LOG_FILE
+
+echo "Load Schema"
+cd mongodb-main
+mongo < catalogue.js &>>$LOG_FILE
+mongo < users.js &>>LOG_FILE
