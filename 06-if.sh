@@ -17,5 +17,5 @@ fi
 
 c=100
 if [ $c -eq 100 ]; then
-  echo a is OK
+  echo a is Okay
 fi
