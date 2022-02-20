@@ -16,6 +16,6 @@ then echo B is empty/Not declared variable
 fi
 
 c=100
-if [ $c -eq 100]; then echo OK
-elseif [ $c -gt 100]; then echo It is greater
+if [ $c -eq 100 ]; then echo OK
+elseif [ $c -gt 100 ]; then echo It is greater
 fi
