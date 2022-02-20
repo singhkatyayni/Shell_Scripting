@@ -45,5 +45,15 @@ echo "Clean old content"
 rm -rf usr/share/gninx/html/*
 
 echo "Extract frontend content"
-cd /usr/share/ninx/html/ &>>$LOG_FILE
+cd /tmp
 unzip /tmp/frontend.zip &>>$LOG_FILE
+
+echo "copy extracted content to nginx path"
+cp -r frontend-main/static/* /usr/share/ninx/html/ &>>$LOG_FILE
+
+echo "copy nginx roboshop config"
+cp frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
+
+echo "start nginx service"
+systemctl enable nginx &>>$LOG_FILE
+systemctl start nginx &>>$LOG_FILE
