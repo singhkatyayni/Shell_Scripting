@@ -33,8 +33,8 @@
 #
 ##Finally restart the service once to effect the changes.
 
-LOG_FILE=/tmp/roboshop.log
-rm -f $LOG_FILE
+source components/common.sh
+
 echo "Installing nginx"
 yum install nginx -y &>>/tmp/roboshop.log
 
