@@ -19,6 +19,6 @@ PRIVATE_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=${INSTANC
 if [ -z "{PRIVATE_IP" ]; then
 aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --output text --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${INSTANCE_NAME}}]"
 else
-  echo -e "\e[1;33mInstance ${INSTANCE_NAME} already exists hence unable to create\e[0m"
+  echo -e "\e[1;33mInstance ${INSTANCE_NAME} already exists\e[0m"
   exit
 fi
