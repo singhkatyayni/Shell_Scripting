@@ -5,6 +5,6 @@ if [ "${n1}" -gt 0 ] && [ "${n2}" -gt 0 ];
 then Add="$((n1 + n2))"
 echo "Adding the two numbers $Add"
 else
-  echo "Arguments not given"
+  echo "Arguments not given or they are 0"
 fi
 
